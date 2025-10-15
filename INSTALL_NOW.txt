@@ -1,0 +1,114 @@
+═══════════════════════════════════════════════════════════════
+   🚀 HASHMYTAG - INSTALLATION MVP (15 MINUTES)
+   🌟 AVEC SOLUTION HYBRIDE MODE SIMPLE + AVANCÉ
+═══════════════════════════════════════════════════════════════
+
+📂 OUVRIR POWERSHELL DANS : C:\Users\Lenovo\Desktop\hashmytag
+
+═══════════════════════════════════════════════════════════════
+   ÉTAPE 1 : INSTALLATION (5 min)
+═══════════════════════════════════════════════════════════════
+
+composer install
+npm install
+copy .env.example .env
+php artisan key:generate
+
+═══════════════════════════════════════════════════════════════
+   ÉTAPE 2 : BASE DE DONNÉES (2 min)
+═══════════════════════════════════════════════════════════════
+
+OPTION A - SQLite (PLUS SIMPLE) :
+─────────────────────────────────
+New-Item -Path "database" -Name "database.sqlite" -ItemType "file"
+
+Puis éditer .env :
+DB_CONNECTION=sqlite
+# Commenter toutes les autres lignes DB_*
+
+OPTION B - MySQL :
+─────────────────────────────────
+1. Ouvrir MySQL :
+   mysql -u root -p
+
+2. Créer la base :
+   CREATE DATABASE hashmytag CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+   EXIT;
+
+3. Configurer .env :
+   DB_CONNECTION=mysql
+   DB_HOST=127.0.0.1
+   DB_PORT=3306
+   DB_DATABASE=hashmytag
+   DB_USERNAME=root
+   DB_PASSWORD=votre_mot_de_passe
+
+═══════════════════════════════════════════════════════════════
+   ÉTAPE 3 : SETUP FINAL (5 min)
+═══════════════════════════════════════════════════════════════
+
+php artisan migrate
+php artisan storage:link
+npm run build
+
+═══════════════════════════════════════════════════════════════
+   ÉTAPE 4 : DÉMARRER ! (3 min)
+═══════════════════════════════════════════════════════════════
+
+php artisan serve
+
+Puis ouvrir dans le navigateur :
+→ http://localhost:8000/register
+
+═══════════════════════════════════════════════════════════════
+   CRÉER VOTRE COMPTE
+═══════════════════════════════════════════════════════════════
+
+Nom : Test Company
+Email : admin@test.com
+Domaine : test.local
+Mot de passe : password
+Confirmer : password
+
+→ Cliquer sur "Créer mon compte gratuitement"
+→ Vous serez redirigé vers le Dashboard !
+
+═══════════════════════════════════════════════════════════════
+   TESTER LE WIDGET
+═══════════════════════════════════════════════════════════════
+
+1. Dans le dashboard, aller dans "Paramètres"
+2. Copier l'API Key (format : hmt_...)
+3. Créer un fichier test.html :
+
+<!DOCTYPE html>
+<html>
+<head><title>Test Widget</title></head>
+<body>
+    <h1>Test Widget HashMyTag</h1>
+    <div id="hashmytag-wall"></div>
+    <script src="http://localhost:8000/widget.js"></script>
+    <script>
+        HashMyTag.init({
+            apiKey: 'VOTRE_API_KEY_ICI',
+            theme: 'light',
+            gamification: true
+        });
+    </script>
+</body>
+</html>
+
+4. Ouvrir test.html dans le navigateur
+
+═══════════════════════════════════════════════════════════════
+   ✅ C'EST TOUT !
+═══════════════════════════════════════════════════════════════
+
+Votre application SaaS est maintenant fonctionnelle !
+
+📚 Documentation complète : START_HERE.md
+🎯 Plan d'action MVP : MVP_ACTION_PLAN.md
+🚀 Scalabilité : SCALABILITY_ANALYSIS.md
+
+═══════════════════════════════════════════════════════════════
+

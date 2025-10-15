@@ -1,0 +1,186 @@
+═══════════════════════════════════════════════════════════════
+   📋 PLAN IMPLÉMENTATION SOLUTION HYBRIDE - RÉSUMÉ
+═══════════════════════════════════════════════════════════════
+
+🎯 OBJECTIF :
+   Pricing avec option "Connecter son compte" à +20€/mois
+
+═══════════════════════════════════════════════════════════════
+   📊 VUE D'ENSEMBLE
+═══════════════════════════════════════════════════════════════
+
+DURÉE TOTALE : 2 semaines (26 heures dev)
+COÛT : 2,080€ (dev senior 80€/h)
+ROI : 2-3 mois avec 50 clients
+
+═══════════════════════════════════════════════════════════════
+   📅 PHASES DU PROJET
+═══════════════════════════════════════════════════════════════
+
+PHASE 1 : Backend Core (8h)
+├─ Modifier InstagramFeed.php (1h30)
+├─ Modifier FacebookFeed.php (1h30)
+├─ Modifier TwitterFeed.php (1h30)
+├─ Modifier FeedService.php (2h)
+└─ Tests unitaires (1h30)
+
+PHASE 2 : OAuth Feed Connection (6h)
+├─ Créer FeedConnectionController (3h)
+├─ Ajouter routes OAuth (30 min)
+└─ Ajouter routes API (15 min)
+
+PHASE 3 : Frontend UI (4h)
+├─ Créer FeedConnectionModal.vue (2h)
+└─ Modifier Feeds.vue (2h)
+
+PHASE 4 : Token Refresh (2h)
+├─ Créer TokenRefreshService (1h)
+├─ Créer commande Artisan (30 min)
+└─ Ajouter au scheduler (15 min)
+
+PHASE 5 : Pricing & Add-ons (3h)
+├─ Modifier config/plans.php (30 min)
+├─ Créer migration tenant_addons (30 min)
+├─ Créer modèle TenantAddon (30 min)
+├─ Ajouter méthodes Tenant (30 min)
+└─ Modifier Billing.vue (1h)
+
+PHASE 6 : Stripe Add-ons (2h)
+├─ Modifier StripeController (1h30)
+├─ Ajouter routes (15 min)
+└─ API tenant addons (15 min)
+
+PHASE 7 : Tests (4h)
+├─ Tests backend (2h)
+└─ Tests E2E (2h)
+
+PHASE 8 : Documentation (2h)
+├─ Guide utilisateur (1h)
+└─ Guide admin (1h)
+
+═══════════════════════════════════════════════════════════════
+   📁 FICHIERS
+═══════════════════════════════════════════════════════════════
+
+NOUVEAUX (11 fichiers) :
+1.  app/Http/Controllers/FeedConnectionController.php
+2.  app/Services/TokenRefreshService.php
+3.  app/Console/Commands/RefreshSocialTokens.php
+4.  app/Models/TenantAddon.php
+5.  database/migrations/tenant/create_tenant_addons_table.php
+6.  resources/js/Components/FeedConnectionModal.vue
+7.  tests/Unit/HybridFeedTest.php
+8.  tests/Feature/HybridConnectionTest.php
+9.  tests/Feature/OAuthFeedConnectionTest.php
+10. GUIDE_MODE_AVANCE.md
+11. ADMIN_HYBRID_GUIDE.md
+
+MODIFIÉS (12 fichiers) :
+1.  app/Services/Feeds/InstagramFeed.php
+2.  app/Services/Feeds/FacebookFeed.php
+3.  app/Services/Feeds/TwitterFeed.php
+4.  app/Services/FeedService.php
+5.  app/Models/Tenant.php
+6.  config/plans.php
+7.  routes/web.php
+8.  routes/api.php
+9.  routes/console.php
+10. app/Http/Controllers/StripeController.php
+11. resources/js/Pages/Dashboard/Feeds.vue
+12. resources/js/Pages/Dashboard/Billing.vue
+
+TOTAL : 23 fichiers
+
+═══════════════════════════════════════════════════════════════
+   💰 PRICING AVEC HYBRIDE
+═══════════════════════════════════════════════════════════════
+
+STARTER (29€/mois) :
+├─ Mode Simple uniquement
+├─ Hashtags publics
+└─ API HashMyTag (partagée)
+
+BUSINESS (79€/mois) :
+├─ Mode Simple inclus
+├─ + Option Mode Avancé
+└─ Add-on : +20€/mois par connexion
+   ├─ Instagram Connection : +20€
+   ├─ Facebook Connection : +20€
+   └─ Twitter Connection : +20€
+
+ENTERPRISE (199€/mois) :
+├─ Mode Avancé INCLUS
+├─ Connexions illimitées
+└─ Limites API dédiées
+
+═══════════════════════════════════════════════════════════════
+   🎯 FLUX UTILISATEUR FINAL
+═══════════════════════════════════════════════════════════════
+
+CLIENT PLAN STARTER :
+1. Crée flux → Mode Simple automatique
+2. Entre hashtags
+3. ✅ Posts publics affichés
+
+CLIENT PLAN BUSINESS :
+1. Crée flux → Choix Mode Simple/Avancé
+2a. Si Simple : Entre hashtags → ✅
+2b. Si Avancé : 
+    → Achète add-on (+20€/mois)
+    → Connecte son compte
+    → ✅ Tous ses posts affichés
+
+CLIENT PLAN ENTERPRISE :
+1. Crée flux → Mode Avancé par défaut
+2. Connecte son compte
+3. ✅ Accès complet inclus
+
+═══════════════════════════════════════════════════════════════
+   📊 MÉTRIQUES SUCCÈS
+═══════════════════════════════════════════════════════════════
+
+TECHNIQUE :
+✅ Tests : 100% pass
+✅ Rétrocompatible : Oui
+✅ Performance : < 500ms
+✅ Erreurs OAuth : < 5%
+
+BUSINESS :
+✅ Adoption mode avancé : 10% (mois 1) → 20% (mois 3)
+✅ Revenue add-ons : +15% total (mois 6)
+✅ Churn : Inchangé ou amélioré
+
+═══════════════════════════════════════════════════════════════
+   🚀 RECOMMANDATION
+═══════════════════════════════════════════════════════════════
+
+MAINTENANT (MVP) :
+→ Mode centralisé uniquement ✅
+→ Valider le marché
+→ Pas de dev supplémentaire
+
+DANS 3-6 MOIS (Si succès) :
+→ Implémenter solution hybride
+→ 2 semaines de dev
+→ ROI : 2-3 mois
+
+═══════════════════════════════════════════════════════════════
+   ✅ CONCLUSION
+═══════════════════════════════════════════════════════════════
+
+FAISABILITÉ : ✅ 100% Faisable
+COMPLEXITÉ : 🟡 Moyenne
+TEMPS : 2 semaines
+COÛT : ~2,000€
+ROI : 2-3 mois
+PRIORITÉ : 🟢 Basse pour MVP, 🟡 Moyenne après validation
+
+ARCHITECTURE ACTUELLE : 60% prêt
+CE QUI MANQUE : 40% (23 fichiers)
+
+═══════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION COMPLÈTE : PLAN_IMPLEMENTATION_HYBRIDE.md
+
+🎊 PLAN COMPLET ET DÉTAILLÉ - PRÊT POUR IMPLÉMENTATION !
+
