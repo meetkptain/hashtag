@@ -1,0 +1,15 @@
+<IfModule mod_rewrite.c>
+    # ═══════════════════════════════════════════════════════════
+    # .htaccess RACINE - HashMyTag v1.2.1
+    # ═══════════════════════════════════════════════════════════
+    # Ce fichier redirige toutes les requêtes vers /public
+    # (Utile si le serveur pointe vers la racine du projet)
+    # ═══════════════════════════════════════════════════════════
+
+    RewriteEngine On
+
+    # Rediriger toutes les requêtes vers /public
+    RewriteRule ^(.*)$ public/$1 [L]
+
+</IfModule>
+

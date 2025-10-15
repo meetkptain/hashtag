@@ -58,7 +58,7 @@
         <div class="card text-left">
           <div class="text-4xl mb-4">⚡</div>
           <h3 class="text-xl font-bold mb-2">Ultra Rapide</h3>
-          <h3 class="text-gray-600">Chargement asynchrone, cache intelligent, défilement fluide. Performance optimale sur tous les appareils.</p>
+          <p class="text-gray-600">Chargement asynchrone, cache intelligent, défilement fluide. Performance optimale sur tous les appareils.</p>
         </div>
 
         <div class="card text-left">
