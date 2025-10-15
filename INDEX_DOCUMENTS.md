@@ -20,9 +20,12 @@
 
 | Document | Lignes | But | Priorité |
 |----------|--------|-----|----------|
+| `GUIDE_INSTALLATION_COMPLET.md` | 919 | **Installation A→Z basée sur analyse code** (8 phases, 26 min) | ⭐⭐⭐⭐⭐ |
 | `INSTALL_NOW.txt` | 150+ | Commandes copy/paste | ⭐⭐⭐⭐⭐ |
 | `QUICKSTART.md` | 200 | Installation en 5 minutes | ⭐⭐⭐⭐⭐ |
 | `INSTALLATION.md` | 350 | Installation détaillée | ⭐⭐⭐⭐ |
+| `ANALYSE_CODE_COMPLETE.md` | 919 | Analyse technique architecture Laravel | ⭐⭐⭐⭐ |
+| `CORRECTIONS_APPLIQUEES.md` | 300 | Détail corrections v1.2.1 | ⭐⭐⭐⭐ |
 
 ---
 

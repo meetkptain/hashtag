@@ -1,4 +1,6 @@
-# ⚡ Démarrage Rapide - HashMyTag v1.2.0
+# ⚡ Démarrage Rapide - HashMyTag v1.2.1
+
+**🟢 Production Ready** (Corrections Appliquées)
 
 ## 🎯 En 5 Minutes
 
@@ -11,10 +13,12 @@ cd hashmytag
 composer install && npm install
 
 # Configurer
-cp .env.example .env
+# ⚠️ Note : .env.example manquant, créer manuellement
+# Voir modèle complet : GUIDE_INSTALLATION_COMPLET.md
+touch .env  # ou New-Item .env sur Windows
 php artisan key:generate
 
-# Base de données (inclut gamification v1.2)
+# Base de données (inclut gamification v1.2 + corrections v1.2.1)
 php artisan migrate
 
 # Seeder badges gamification (15 badges)
