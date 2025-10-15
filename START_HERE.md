@@ -1,13 +1,24 @@
-# 🚀 DÉMARRAGE RAPIDE - HashMyTag MVP
+# 🚀 DÉMARRAGE RAPIDE - HashMyTag v1.2.0
 
 ## ✅ TOUT LE CODE EST PRÊT !
 
-L'application est **100% complète** avec **Solution Hybride** implémentée !
+L'application est **100% complète** avec **Solution Hybride** + **Gamification Backend** implémentés !
 
-### 🌟 **NOUVEAUTÉ : Mode Simple + Mode Avancé**
+### 🎮 **NOUVEAUTÉ v1.2 : Gamification Backend Implémentée**
+
+- ⭐ **Points Système** : Attribution automatique (+50 + bonus)
+- 🏆 **Leaderboard** : Global, hebdo, mensuel (APIs fonctionnelles)
+- 🏅 **15 Badges** : 7 types de critères, déblocage auto
+- 👤 **Création Auto Users** : Zéro inscription (unique marché) ✨
+- 📡 **12 APIs** : Endpoints testables
+- 🔄 **Reset Auto** : Hebdo/mensuel via scheduler
+
+**Installation gamification** : `GAMIFICATION_INSTALL_GUIDE.md`
+
+### 🌟 **v1.1 : Mode Simple + Mode Avancé**
 
 - 🟢 **Mode Simple** : API HashMyTag (hashtags publics) - Inclus
-- 🟣 **Mode Avancé** : Connexion compte client (+20€/mois) - NOUVEAU !
+- 🟣 **Mode Avancé** : Connexion compte client (+20€/mois)
 
 ---
 
@@ -67,14 +78,20 @@ DB_PASSWORD=votre_mot_de_passe
 ### Étape 5 : Migrations et Setup
 
 ```powershell
-# Exécuter les migrations
+# Exécuter les migrations (inclut gamification v1.2)
 php artisan migrate
+
+# Seeder badges gamification (15 badges)
+php artisan db:seed --class=BadgeSeeder
 
 # Créer le lien symbolique
 php artisan storage:link
 
 # Compiler les assets
 npm run build
+
+# Redémarrer queue workers (gamification asynchrone)
+php artisan queue:restart
 ```
 
 ### Étape 6 : Démarrer !

@@ -17,6 +17,26 @@ class Kernel extends ConsoleKernel
 
         // Clean old analytics monthly
         $schedule->command('analytics:clean')->monthly();
+        
+        // ═══════════════════════════════════════════════════════════
+        // GAMIFICATION SCHEDULER (v1.2.0)
+        // ═══════════════════════════════════════════════════════════
+        
+        // Reset weekly points (every Sunday at 00:00)
+        $schedule->command('points:reset-weekly')
+            ->weekly()
+            ->sundays()
+            ->at('00:00');
+        
+        // Reset monthly points (1st of month at 00:00)
+        $schedule->command('points:reset-monthly')
+            ->monthly()
+            ->at('00:00');
+        
+        // Refresh social tokens (existing)
+        if (class_exists('\App\Console\Commands\RefreshSocialTokens')) {
+            $schedule->command('tokens:refresh')->daily();
+        }
     }
 
     /**

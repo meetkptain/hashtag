@@ -10,6 +10,15 @@ class Post extends Model
     use HasFactory;
 
     protected $connection = 'tenant';
+    
+    /**
+     * The event map for the model.
+     *
+     * @var array
+     */
+    protected $dispatchesEvents = [
+        'created' => \App\Events\PostCreated::class,
+    ];
 
     protected $fillable = [
         'feed_id',

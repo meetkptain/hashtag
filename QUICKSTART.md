@@ -1,4 +1,4 @@
-# ⚡ Démarrage Rapide - HashMyTag
+# ⚡ Démarrage Rapide - HashMyTag v1.2.0
 
 ## 🎯 En 5 Minutes
 
@@ -14,11 +14,17 @@ composer install && npm install
 cp .env.example .env
 php artisan key:generate
 
-# Base de données
+# Base de données (inclut gamification v1.2)
 php artisan migrate
+
+# Seeder badges gamification (15 badges)
+php artisan db:seed --class=BadgeSeeder
 
 # Compiler
 npm run build
+
+# Queue workers (gamification)
+php artisan queue:work &
 ```
 
 ### 2️⃣ Créer votre compte
